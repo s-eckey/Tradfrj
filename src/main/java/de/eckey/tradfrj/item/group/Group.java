@@ -17,6 +17,9 @@ public class Group extends Item {
 	@SerializedName("9039")
 	private int sceneId;
 
+	@SerializedName("9018")
+	private GroupData groupData;
+
 	public String getName() {
 		return name;
 	}
@@ -31,6 +34,10 @@ public class Group extends Item {
 
 	public int getSceneId() {
 		return sceneId;
+	}
+
+	public GroupData getGroupData() {
+		return groupData;
 	}
 
 }

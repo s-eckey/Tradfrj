@@ -26,11 +26,7 @@ public class TradfrjRequestExecutor {
 	}
 
 	public <T> T executeRequest(TradfrjRequestBuilder<T> requestBuilder) throws ServiceException {
-		final TradfrjRequest<T> request = requestBuilder.getRequest();
-		final CoapRequest coapRequest = request.getRequest();
-		final CoapResponse coapResponse = service.sendRequest(coapRequest);
-
-		return request.handleResponse(coapResponse);
+		return executeRequest(requestBuilder.getRequest());
 	}
 
 	public <T> Collection<T> executeRequest(TradfrjRequestIterator<T> requestList) throws ServiceException {
@@ -43,6 +39,7 @@ public class TradfrjRequestExecutor {
 					result.add(optional.get());
 				}
 			} catch (ServiceException e) {
+				// TODO don't cancel the execution, try the other first
 				exception.set(e);
 				return;
 			}

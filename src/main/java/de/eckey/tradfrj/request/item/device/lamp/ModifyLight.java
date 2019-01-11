@@ -25,7 +25,6 @@ public class ModifyLight implements TradfrjRequest<Void> {
 
 	@Override
 	public Void handleResponse(CoapResponse response) {
-		System.out.println(response.getResponseCode());
 		return null;
 	}
 }

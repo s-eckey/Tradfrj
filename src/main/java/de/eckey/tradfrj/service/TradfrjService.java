@@ -96,7 +96,11 @@ public class TradfrjService {
 			log.debug(request.toString());
 			dtlsEndpoint.sendRequest(request);
 			final Response response = request.waitForResponse();
-			log.debug(response.getPayloadString());
+			log.debug(response.toString());
+			if (response.getPayloadSize() > 0) {
+
+				log.debug("response payload: \"" + response.getPayloadString() + "\"");
+			}
 			if (ResponseCode.isSuccess(response.getCode())) {
 				return CoapResponse.from(response);
 			} else {
