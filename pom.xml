@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.eckey</groupId>
 	<artifactId>Tradfrj</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>tradfrj</name>
 	<description>Java Implementation of the IKEA Tradfri CoAP Protocoll</description>
 
