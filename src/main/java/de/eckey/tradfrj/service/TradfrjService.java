@@ -1,8 +1,8 @@
 package de.eckey.tradfrj.service;
 
-import java.io.IOException;
-import java.util.function.Supplier;
-
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import de.eckey.tradfrj.service.security.HandshakePskStore;
 import org.eclipse.californium.core.coap.CoAP.Code;
 import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
@@ -17,10 +17,8 @@ import org.eclipse.californium.scandium.dtls.pskstore.PskStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import de.eckey.tradfrj.service.security.HandshakePskStore;
+import java.io.IOException;
+import java.util.function.Supplier;
 
 public class TradfrjService {
 
@@ -96,6 +94,9 @@ public class TradfrjService {
 			log.debug(request.toString());
 			dtlsEndpoint.sendRequest(request);
 			final Response response = request.waitForResponse();
+			if(response == null){
+				throw new ServiceException("request was not successful. empty response. Is the user authenticated?");
+			}
 			log.debug(response.toString());
 			if (response.getPayloadSize() > 0) {
 
@@ -104,7 +105,7 @@ public class TradfrjService {
 			if (ResponseCode.isSuccess(response.getCode())) {
 				return CoapResponse.from(response);
 			} else {
-				throw new ServiceException("request was not successfull. response: '" + response + "'");
+				throw new ServiceException("request was not successful. response: '" + response + "'");
 			}
 		} catch (Exception e) {
 			throw new ServiceException("exception while using the coap service", e);

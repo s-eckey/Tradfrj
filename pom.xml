@@ -24,6 +24,19 @@
 		<junit-jupiter-engine.version>5.3.2</junit-jupiter-engine.version>
 	</properties>
 
+	<licenses>
+		<license>
+			<name>MIT License</name>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Sebastian Eckey</name>
+			<url>https://github.com/s-eckey</url>
+		</developer>
+	</developers>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.californium</groupId>
@@ -55,7 +68,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j-log4j12.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<!-- end logging -->
 		<dependency>

@@ -1,14 +1,14 @@
 package de.eckey.tradfrj.request;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
-
 import de.eckey.tradfrj.service.CoapRequest;
 import de.eckey.tradfrj.service.CoapResponse;
 import de.eckey.tradfrj.service.ServiceException;
 import de.eckey.tradfrj.service.TradfrjService;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class TradfrjRequestExecutor {
 
@@ -47,7 +47,7 @@ public class TradfrjRequestExecutor {
 		if (exception.get() == null) {
 			return result;
 		} else {
-			throw new ServiceException("exception occured while executing request list", exception.get());
+			throw new ServiceException("exception occurred while executing request list", exception.get());
 		}
 	}
 }
